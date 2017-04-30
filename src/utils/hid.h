@@ -40,8 +40,8 @@ void hid_init();
 void hid_deinit();
 
 
-void my_read_cb(unsigned int handle, int error, unsigned char *buf, unsigned int bytes_transfered, void *p_user);
-int my_attach_cb(HIDClient *p_client, HIDDevice *p_device, unsigned int attach);
+void my_read_cb(u32 handle,s32 error,u8 *p_buffer,u32 bytes_transfered,void *p_user);
+s32 my_attach_cb(HIDClient *p_client, HIDDevice *p_device, u32 attach);
 
 
 #ifdef __cplusplus

@@ -33,11 +33,9 @@ void hid_deinit(){
     HIDDelClient(&gHIDClient);
 }
 
-
 #define SWAP16(x) ((x>>8) | ((x&0xFF)<<8))
 #define SWAP8(x) ((x>>4) | ((x&0xF)<<4))
-int my_attach_cb(HIDClient *p_client, HIDDevice *p_device, unsigned int attach)
-{
+s32 my_attach_cb(HIDClient *p_client, HIDDevice *p_device, u32 attach){
     if(attach){
         log_printf("vid %04x pid %04x connected\n", SWAP16(p_device->vid),SWAP16(p_device->pid));
         log_printf("interface index  %02x\n", p_device->interface_index);
@@ -62,6 +60,11 @@ int my_attach_cb(HIDClient *p_client, HIDDevice *p_device, unsigned int attach)
         usr->transfersize = p_device->max_packet_size_rx;
         usr->handle = p_device->handle;
 
+        if(SWAP16(p_device->vid) == 0x057e && SWAP16(p_device->pid) == 0x0337){
+            buf[0] = 0x13;
+            HIDWrite(p_device->handle, usr->buf, 1, NULL,NULL);
+        }
+
         HIDRead(p_device->handle, usr->buf, p_device->max_packet_size_rx, my_read_cb, usr);
 
         return HID_DEVICE_ATTACH;
@@ -80,21 +83,16 @@ int my_attach_cb(HIDClient *p_client, HIDDevice *p_device, unsigned int attach)
 	return HID_DEVICE_DETACH;
 }
 
-
-
-//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//! GC-Adapter
-//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-void my_read_cb(unsigned int handle, int error, unsigned char *buf, unsigned int bytes_transfered, void *p_user)
+void my_read_cb(u32 handle,s32 error,u8 *p_buffer,u32 bytes_transfered,void *p_user)
 {
 	if(error == 0 && p_user != NULL )
 	{
 		my_cb_user *usr = (my_cb_user*)p_user;
 		hid_callback_data = usr;
 		unsigned char*  buffer = usr->buf;
-		log_printf("     %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X", buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7], buffer[8], buffer[9], buffer[10], buffer[11], buffer[12], buffer[13], buffer[14], buffer[15]);
-
+		if(buffer != NULL){
+            log_printf("data: %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\n", buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7], buffer[8], buffer[9], buffer[10], buffer[11], buffer[12], buffer[13], buffer[14], buffer[15]);
+		}
         HIDRead(handle, usr->buf, bytes_transfered, my_read_cb, usr);
 	}
 }

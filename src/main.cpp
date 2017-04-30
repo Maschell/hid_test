@@ -44,8 +44,6 @@ extern "C" int Menu_Main(void)
 #define SWAP16(x) ((x>>8) | ((x&0xFF)<<8))
 #define SWAP8(x) ((x>>4) | ((x&0xF)<<4))
 void DisplayScreen(){
-
-
     // Prepare screen
     int screen_buf0_size = 0;
 
@@ -69,7 +67,7 @@ void DisplayScreen(){
     char* msg = (char*) malloc(80);
 
     VPADData vpad_data;
-    int error;
+    s32 error;
     do{
         // Refresh screens
         OSScreenFlipBuffersEx(1);
