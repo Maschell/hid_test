@@ -1,3 +1,7 @@
+/build
+*.rpx
+*.wuhb
+*.elf
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -46,8 +50,3 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-/build
-hidtest.cbp
-hidtest.elf
-hidtest_dbg.elf
-hidtest.layout

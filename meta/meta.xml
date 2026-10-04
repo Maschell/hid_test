@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="true"?>
-<app version="1">
-    <name>HID-TEST</name>
-    <coder>Maschell</coder>
-    <version>0.1</version>
-    <release_date>20160803000000</release_date>
-    <short_description>Displays input from HID devices</short_description>
-    <long_description>Displays input from HID devices</long_description>
-</app>

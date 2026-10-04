@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#26324a"/>
+      <stop offset="1" stop-color="#0e131c"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9aa6b8"/>
+      <stop offset="0.5" stop-color="#e8edf3"/>
+      <stop offset="1" stop-color="#9aa6b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <!-- USB plug from the icon, scaled up -->
+  <g transform="translate(-20,145) scale(5)">
+    <rect x="62" y="64" width="4" height="10" fill="#c9d1dc"/>
+    <rect x="47" y="12" width="34" height="24" rx="2" fill="url(#metal)"/>
+    <rect x="55" y="19" width="6" height="6" fill="#26324a"/>
+    <rect x="67" y="19" width="6" height="6" fill="#26324a"/>
+    <rect x="42" y="35" width="44" height="31" rx="6" fill="#f2f4f7"/>
+    <g stroke="#26324a" stroke-width="2.2" fill="none" stroke-linecap="round">
+      <line x1="64" y1="61" x2="64" y2="42"/>
+      <line x1="64" y1="55" x2="55" y2="49"/>
+      <line x1="64" y1="52" x2="73" y2="46"/>
+    </g>
+    <polygon points="64,39 61,44 67,44" fill="#26324a"/>
+    <circle cx="55" cy="48" r="2.4" fill="#26324a"/>
+    <rect x="71" y="43" width="4.5" height="4.5" fill="#26324a"/>
+  </g>
+
+  <text x="490" y="318" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="bold" font-size="120" fill="#f2f4f7">HID-TEST</text>
+  <text x="494" y="378" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" fill="#9aa6b8">USB HID report viewer</text>
+
+  <rect x="718" y="436" width="104" height="82" rx="14" fill="#ff9f1c"/>
+  <g font-family="Menlo, Monaco, monospace" font-weight="bold" font-size="64">
+    <text x="494" y="500" fill="#8fd3ff">0F</text>
+    <text x="608" y="500" fill="#8fd3ff">80</text>
+    <text x="731" y="500" fill="#1a1f2b">01</text>
+  </g>
+</svg>
